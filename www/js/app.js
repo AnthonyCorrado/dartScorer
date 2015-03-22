@@ -6,8 +6,10 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('dartScorer', ['ionic',
+    'ngLodash',
     'starter.controllers',
     'starter.services',
+    'dartScorer.TabController',
     'dartScorer.GameController',
     'dartScorer.PlayerService',
     'dartScorer.BoardController'
@@ -40,7 +42,8 @@ angular.module('dartScorer', ['ionic',
     .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: "templates/tabs.html",
+    controller: 'TabController'
   })
 
   // Each tab has its own nav history stack:

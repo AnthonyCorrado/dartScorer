@@ -1,6 +1,10 @@
 angular.module('dartScorer.BoardController', [])
 
-.controller('BoardController', function($scope, $ionicModal, PlayerService) {
+.controller('BoardController', function($scope, $rootScope, $ionicModal, PlayerService, lodash, $stateParams) {
+
+    $scope.gameTitle = $stateParams.gameType;
+    var turnNum = 1;
+    var playerTurn = 1;
 
     $ionicModal.fromTemplateUrl('templates/player-select.html', {
         scope: $scope,
@@ -18,14 +22,64 @@ angular.module('dartScorer.BoardController', [])
     };
 
     $scope.score = function(score, type) {
-        alert(score);
-        console.log(type);
+        if (playerTurn === 1) {
+            $scope.setPlayers[0].score -= score;
+        }
+        else if (playerTurn === 2) {
+            $scope.setPlayers[1].score -= score;
+        }
+        else if (playerTurn === 3) {
+            $scope.setPlayers[2].score -= score;
+        }
+        else if (playerTurn === 4) {
+            $scope.setPlayers[3].score -= score;
+        }
+        if(turnNum % 3 === 0) {
+            if(playerTurn < $scope.setPlayers.length) {
+               playerTurn++;
+            } else {
+                playerTurn = 1;
+            }
+        }
+        turnNum++;
     };
 
     $scope.players = PlayerService.getPlayers();
 
-    $scope.selectPlayer = function(playerObj) {
-        console.log(playerObj);
+    $scope.selectedPlayers = [];
+
+    $scope.selectPlayer = function(index, playerObj) {
+        var id = playerObj.id;
+        console.log(id);
+        $scope.players[index].selected = !$scope.players[index].selected;
+        if (lodash.contains($scope.selectedPlayers, id)){
+            $scope.selectedPlayers.pop(id);
+        }
+        else {
+            $scope.selectedPlayers.push(id);
+        }
+    };
+
+    $scope.startGame = function() {
+        var competitors = [];
+        console.log($scope.players[0].id);
+        lodash.forEach($scope.players, function (n, key) {
+            lodash.forEach($scope.selectedPlayers, function (x, xKey) {
+                if (n.id === x) {
+                    n.score = 301;
+                    competitors.push(n);
+                }
+            });
+        });
+        $scope.setPlayers = competitors;
+        $scope.closeModal();
+
+    };
+
+
+    // -------- modal controls -------------------
+    $scope.closeModal = function() {
+        $scope.modal.hide();
     };
 
     $scope.$on('$destroy', function() {
@@ -45,5 +99,5 @@ angular.module('dartScorer.BoardController', [])
         $scope.hideMenu = false;
         // Execute action
     });
-
+    // -----------------------------------------
 });

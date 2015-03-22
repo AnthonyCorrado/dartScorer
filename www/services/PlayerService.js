@@ -12,39 +12,43 @@ angular.module('dartScorer.PlayerService', [])
     }, {
       id: 0,
       name: 'Anthony',
-      face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/8lT9nh2LWcNYfec/Screen%20Shot%202015-01-15%20at%206.16.38%20PM.png'
     }, {
       id: 1,
       name: 'Lorenzo',
-      face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/Tc5ygqekrulVgfH/Screen%20Shot%202015-01-15%20at%206.14.39%20PM.png'
     }, {
       id: 2,
       name: 'AJ',
-      face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/2LRx3ePOryO0FCW/Screen%20Shot%202015-01-15%20at%206.13.49%20PM.png'
     }, {
       id: 3,
       name: 'Ryan',
-      face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/DHvhzkrKqLzoFl9/Screen%20Shot%202015-01-15%20at%206.13.32%20PM.png'
     }, {
       id: 4,
       name: 'Adam',
-      face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/g34yCQkHHYXApHd/Screen%20Shot%202015-01-15%20at%206.09.00%20PM.png'
     }, {
-      id: 3,
+      id: 5,
       name: 'Alex',
-      face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/0U85vmHHkkvwZRk/Screen%20Shot%202015-01-15%20at%206.08.01%20PM.png'
     }, {
-      id: 3,
+      id: 6,
       name: 'Karan',
-      face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/HZm9w5oIcGvQZuI/Screen%20Shot%202015-01-15%20at%206.07.51%20PM.png'
     }, {
-      id: 3,
+      id: 7,
+      name: 'Ali',
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/Xmnwbug3fZpchFM/Screen%20Shot%202015-01-15%20at%206.09.43%20PM.png'
+    }, {
+      id: 8,
       name: 'Ross',
       face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
     }, {
-      id: 3,
+      id: 9,
       name: 'Brett',
-      face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+      face: 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/nmHgDqSMIOYeYWQ/Screen%20Shot%202015-01-15%20at%206.07.26%20PM.png'
     }];
   };
   return playerData;

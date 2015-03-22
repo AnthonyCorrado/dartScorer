@@ -7632,11 +7632,12 @@ a.button {
   position: inline-block;
   padding: 5px; }
   .player-image img {
-    width: 100%;
+    width: 80%;
     border-radius: 50%; }
 
 .player-box {
   width: 35%;
+  height: 55px;
   margin-left: 10%;
   margin-top: 5%;
   float: left;
@@ -7664,3 +7665,22 @@ a.button {
   position: relative;
   margin-top: 110%;
   padding: 5px; }
+
+.score-container {
+  width: 100%;
+  height: 250px;
+  background-color: orange; }
+
+.player-score-box {
+  width: 35%;
+  height: 40%;
+  margin-left: 10%;
+  margin-top: 2%;
+  background-color: red;
+  float: left;
+  font-size: 1.3em; }
+
+.player-score {
+  float: right;
+  padding: 10%;
+  font-size: 3em; }
