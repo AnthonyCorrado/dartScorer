@@ -2,7 +2,7 @@
   <ion-content>
     <h5>List of Available Games</h5>
         <div class="games-container" ng-repeat="type in gameTypes">
-            <a href="#/tab/dartboard/{{type.name}}">
+            <a href="#/tab/dartboard/{{type.gameTypeId}}">
                 <div class="game-box" ng-click="selectedGame(type.gameTypeId)">{{type.name}}</div>
             </a>
         </div>

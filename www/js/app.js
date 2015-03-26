@@ -7,12 +7,19 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('dartScorer', ['ionic',
     'ngLodash',
+    'firebase',
+    'naif.base64',
     'starter.controllers',
     'starter.services',
     'dartScorer.TabController',
     'dartScorer.GameController',
+    'dartScorer.BoardController',
+    'dartScorer.PlayerController',
+    'dartScorer.PlayerDetailController',
     'dartScorer.PlayerService',
-    'dartScorer.BoardController'
+    'dartScorer.CameraService',
+    'dartScorer.ScoreService',
+    'dartScorer.GameSetupService'
   ])
 
 .run(function($ionicPlatform) {
@@ -77,21 +84,21 @@ angular.module('dartScorer', ['ionic',
       }
     })
 
-  .state('tab.chats', {
+  .state('tab.players', {
       url: '/players',
       views: {
-        'tab-chats': {
+        'tab-players': {
           templateUrl: 'templates/tab-players.html',
-          controller: 'ChatsCtrl'
+          controller: 'PlayerController'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.player-detail', {
+      url: '/players/:playerId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-players': {
+          templateUrl: 'templates/player-detail.html',
+          controller: 'PlayerDetailController'
         }
       }
     })

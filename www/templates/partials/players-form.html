@@ -1,0 +1,28 @@
+<ion-modal-view>
+
+    <ion-header-bar>
+        <div class="form-heading ">Add Player</div>
+    </ion-header-bar>
+
+        <ion-content>
+
+            <div class="list modal-form">            
+                <label class="item item-input">
+                    <input type="text" placeholder="Name" ng-model="player.name">
+                </label>
+
+                <div class="full-width-item">
+                    <button class="button button-light" ng-click="takePicture()">
+                        <div>Capture Image</div>
+                    </button>
+                </div>
+
+                <div class="full-width-item">
+                    <button class="button button-light" ng-hide="drink.exists" ng-click="createPlayer(player)">Add Player</button>
+                    <button class="button button-light" ng-show="drink.exists" ng-click="createPlayer(player)">Update Player</button>
+                </div>
+            </div>
+            
+</ion-content>
+
+</ion-modal-view>

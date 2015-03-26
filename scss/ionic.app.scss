@@ -45,6 +45,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     border-radius: 5px;
 }
 
+// player stylings ----------------------
 .player-select-container {
     width: 100%;
 }
@@ -69,6 +70,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     float: right;
     padding: 10px;
     padding-right: 10%;
+}
+.add-player-box {
+    background-color: lightblue;
+}
+.add-new-player-icon {
+    padding-left: 2%;
+}
+.full-width-item {
+    width: 100%;
+    position: inline;
+    background-color: white;
 }
 .background-gray {
     background-color: rgba(0, 0 ,0, 0.5);

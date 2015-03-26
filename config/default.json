@@ -1,0 +1,5 @@
+{
+    "db" : {
+        "base_url": "https://dartscorer.firebaseio.com/"
+    }
+}

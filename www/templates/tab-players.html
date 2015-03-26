@@ -1,15 +1,25 @@
 <ion-view view-title="Players">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="player in players" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{player.face}}">
-        <h2>{{player.name}}</h2>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <ion-content>
+        <ion-list>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+            <!-- Add player -->
+            <ion-item class="add-player-box item-remove-animate item-avatar item-icon-left" ng-click="addPlayer()">
+                <i class="add-new-player-icon icon ion-person-add"></i>
+                <h2>Add Player</h2>
+            </ion-item>
+
+            <!-- List of existing players -->
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="(playerId, player) in players" type="item-text-wrap" href="#/tab/players/{{playerId}}">
+                <img ng-src="{{player.face}}">
+                <h2>{{player.name}}</h2>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
 </ion-view>

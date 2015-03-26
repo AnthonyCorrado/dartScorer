@@ -3,13 +3,6 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats, PlayerService) {
-
-    $scope.players = PlayerService.getPlayers();
-    console.log($scope.players);
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
