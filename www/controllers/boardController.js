@@ -1,10 +1,9 @@
 angular.module('dartScorer.BoardController', [])
 
 .controller('BoardController', function($scope, $rootScope, $ionicModal, PlayerService, lodash, $stateParams, ScoreService, GameSetupService) {
-
+    var playerTurn = 0;
+    var dartNum = 1;
     $scope.gameTitle = $stateParams.gameType;
-    var turnNum = 1;
-    $scope.playerTurn = 1;
 
     $ionicModal.fromTemplateUrl('templates/player-select.html', {
         scope: $scope,
@@ -21,9 +20,21 @@ angular.module('dartScorer.BoardController', [])
         $scope.modal.show();
     };
 
-
     $scope.score = function(score, type) {
-        var turn = ScoreService.subtractScore(score, type, $scope.playerTurn);
+        // var roundTotal = ScoreService.subtractScore(score, type);
+
+        // perhaps send the player object to the ScoreService to allow for saving of stats and such
+        $scope.setPlayers[playerTurn].score -= score;
+
+        if(dartNum % 3 === 0) {
+            if(playerTurn < ($scope.setPlayers.length - 1)) {
+               playerTurn++;
+               // nextPlayer();
+            } else {
+                playerTurn = 0;
+            }
+        }
+        dartNum++;
     };
 
     // populate "who's playing" modal with players from db
@@ -42,8 +53,8 @@ angular.module('dartScorer.BoardController', [])
     $scope.startGame = function() {
         var competitors = GameSetupService.startGame($scope.players, $stateParams.gameType);
         $scope.setPlayers = competitors;
+        console.log($scope.setPlayers);
         $scope.closeModal();
-
     };
 
     var nextPlayer = function () {
