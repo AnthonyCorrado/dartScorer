@@ -6,8 +6,6 @@ angular.module('dartScorer.GameSetupService', [])
     gameObj.startGame = function(players, gameType) {
         var competitors = [];
         var startingScore = 0;
-
-        console.log(gameType);
         // set starting points based on game type
         if (gameType == 1 || gameType == 11) {
             startingScore = 301;

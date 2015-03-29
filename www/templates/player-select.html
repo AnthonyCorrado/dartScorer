@@ -5,7 +5,7 @@
 
     <ion-content>
         <div class="player-select-container" ng-repeat="(playerId, player) in players">
-            <div class="player-box" ng-click="selectPlayer(playerId, player)">
+            <div class="player-select player-box" ng-click="selectPlayer(playerId, player)">
                 <div class="player-info">{{player.name}}</div>
                 <div class="player-image"><img ng-src="{{player.face}}"></div>
             </div>
@@ -13,7 +13,7 @@
     </ion-content>
 
     <div class="button-wrap">
-        <button ng-click="startGame()" class="button button-block button-light">
+        <button ng-click="initializeGame()" class="button button-block button-light">
             Start Game
         </button>
     </div>

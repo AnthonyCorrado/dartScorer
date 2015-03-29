@@ -1,5 +1,41 @@
 <ion-modal-view>
 
-    <div><h3>{{setPlayers}}, you are up</div>
+    <ion-content>
+
+    <div class="turn-summary-container">
+        <div class="player-box">
+
+            <div class="current-player-box">
+                <div class="player-info">{{turnData}}</div>
+                <div class="player-image"><img ng-src="{{test}}"></div>
+                <div class="spacer turn-score">1st Shot: 10</div>
+                <div class="spacer turn-score">2nd Shot: 13</div>
+                <div class="spacer turn-score">3rd Shot: 20</div>
+                <hr />
+                <div class="turn-score">Round Score: <span class="total-num">43</span></div>
+                <div class="score-total turn-score">Total Score: <span class="total-num">201</span></div>
+            </div>
+
+            <div class="next-player-box">
+                <div class="next-player">
+                    <div>Up next</div>
+                    <hr />
+                    <div class="image-wrap">
+                        <div class="player-image"><img ng-src="{{nextPlayer.face}}"></div>
+                    </div>
+                    <div class="info-wrap">
+                        <div class="player-info">{{nextPlayer.name}}</div>
+                        <div class="player-score">{{nextPlayer.score}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </ion-content>
+
+
 
 </ion-modal-view>

@@ -1,10 +1,12 @@
 angular.module('dartScorer.ScoreService', [])
 
 .factory('ScoreService', function() {
-    var dartNum = 1;
-    var playerTurn = 0;
-
     var scoreData = {};
+    var turnData = {
+        'dartNum': 1,
+        'playerTurn': 0,
+        'nextTurn': false
+    };
 
     scoreData.scoreTotals = function(players) {
         console.log(players);
@@ -12,29 +14,24 @@ angular.module('dartScorer.ScoreService', [])
 
     scoreData.subtractScore = function(score, type) {
         console.log(playerTurn);
-        return - 10;
+    };
 
-        if (playerTurn === 0) {
-            $scope.setPlayers[0].score -= score;
-        }
-        else if (playerTurn === 1) {
-            $scope.setPlayers[1].score -= score;
-        }
-        else if (playerTurn === 2) {
-            $scope.setPlayers[2].score -= score;
-        }
-        else if (playerTurn === 3) {
-            $scope.setPlayers[3].score -= score;
-        }
-        if(turnNum % 3 === 0) {
-            if($scope.playerTurn < $scope.setPlayers.length) {
-               $scope.playerTurn++;
-               nextPlayer();
+    scoreData.whichTurn = function(setPlayers, dart) {
+        turnData.nextTurn = false;
+        console.log('dart ' + turnData.dartNum);
+        if(turnData.dartNum % 3 === 0) {
+            if(turnData.playerTurn < (setPlayers.length - 1)) {
+                turnData.playerTurn++;
+                
             } else {
-                $scope.playerTurn = 1;
+                turnData.playerTurn = 0;
             }
+            turnData.nextTurn = true;
         }
-        turnNum++;
+        if (dart) {
+            turnData.dartNum++;
+        }
+        return turnData;
     };
 
     return scoreData;
