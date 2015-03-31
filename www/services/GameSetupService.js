@@ -26,7 +26,7 @@ angular.module('dartScorer.GameSetupService', [])
             x.score = startingScore;
             // ScoreService.scoreTotals(x);
         });
-        console.log(competitors);
+        // console.log(competitors);
         // ScoreService.setupGame(competitors, gameType);
         return competitors;
     };

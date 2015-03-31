@@ -6,14 +6,14 @@
         <div class="player-box">
 
             <div class="current-player-box">
-                <div class="player-info">{{turnData}}</div>
-                <div class="player-image"><img ng-src="{{test}}"></div>
-                <div class="spacer turn-score">1st Shot: 10</div>
-                <div class="spacer turn-score">2nd Shot: 13</div>
-                <div class="spacer turn-score">3rd Shot: 20</div>
+                <div class="player-info">{{currentPlayer.name}}</div>
+                <div class="player-image"><img ng-src="{{currentPlayer.face}}"></div>
+                <div class="spacer turn-score">1st Shot: {{currentPlayer.firstDart}}</div>
+                <div class="spacer turn-score">2nd Shot: {{currentPlayer.secondDart}}</div>
+                <div class="spacer turn-score">3rd Shot: {{currentPlayer.thirdDart}}</div>
                 <hr />
-                <div class="turn-score">Round Score: <span class="total-num">43</span></div>
-                <div class="score-total turn-score">Total Score: <span class="total-num">201</span></div>
+                <div class="turn-score">Round Score: <span class="total-num">{{currentPlayer.turnTotal}}</span></div>
+                <div class="score-total turn-score">Total Score: <span class="total-num">{{currentPlayer.score}}</span></div>
             </div>
 
             <div class="next-player-box">

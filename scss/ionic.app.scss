@@ -21,6 +21,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+* {
+    // font-family: 'PT Sans Narrow', sans-serif;
+    // font-family: 'Shadows Into Light', cursive;
+    font-family: 'Poiret One', cursive;
+}
 .games-container {
     width: 100%;
     height: 100%;

@@ -26,12 +26,9 @@ angular.module('dartScorer.BoardController', [])
     };
 
     $scope.score = function(score, type) {
-        var dart = true;
-        $scope.setPlayers[turnData.playerTurn].score -= score;
-        // perhaps send the player object to the ScoreService to allow for saving of stats and such
-        turnData = ScoreService.whichTurn($scope.setPlayers, dart);
-        console.log(turnData);
-        if (turnData.nextTurn) {
+        var playerObj = ScoreService.score(score, type, $scope.setPlayers);
+        if (playerObj.nextTurn) {
+            console.log(playerObj);
             turnSummary();
         }
     };
@@ -58,10 +55,14 @@ angular.module('dartScorer.BoardController', [])
     };
 
     var turnSummary = function () {
-        // console.log($scope.setPlayers[playerTurn]);
-        var turnData = ScoreService.whichTurn();
-        $scope.nextPlayer = $scope.setPlayers[turnData.playerTurn];
-        // $scope.currentPlayer = $scope.setPlayers[playerTurn];
+        var turnData = ScoreService.whichTurn($scope.setPlayers, false);
+        $scope.currentPlayer = $scope.setPlayers[turnData.playerTurn];
+        if ((turnData.playerTurn + 1) === $scope.setPlayers.length) {
+            $scope.nextPlayer = $scope.setPlayers[0];
+        } else {
+            $scope.nextPlayer = $scope.setPlayers[turnData.playerTurn + 1];
+        }
+        
         $ionicModal.fromTemplateUrl('templates/next-player.html', {
             scope: $scope,
             animation: 'slide-in-up',

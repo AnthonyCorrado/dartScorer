@@ -7602,6 +7602,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+* {
+  font-family: 'Poiret One', cursive; }
+
 .games-container {
   width: 100%;
   height: 100%; }
