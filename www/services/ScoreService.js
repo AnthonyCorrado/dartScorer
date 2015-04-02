@@ -14,14 +14,15 @@ angular.module('dartScorer.ScoreService', [])
         var turnObj = this.whichTurn(allPlayers, true);
         var turn = turnObj.playerTurn;
         var newTurn = turnObj.nextTurn;
-        var isValid = this.isValidTurn(score, allPlayers[turn]);
-        console.log(isValid);
-        if (turnObj.dartNum === 1) {
-            console.log('first dart');
+        var isValid = this.isValidTurn(score, allPlayers[turn], type);
+        // sets score to revert back to in the event of a bust
+        if ((turnObj.dartNum + 2) % 3 === 0) {
+            allPlayers[turn].revertScore = allPlayers[turn].score;
         }
 
         if (isValid) {
             allPlayers[turn].score -= score;
+            console.log(this.checkForWin(allPlayers[turn].score, type));
         }
         allPlayers[turn].nextTurn = newTurn;
 
@@ -47,7 +48,7 @@ angular.module('dartScorer.ScoreService', [])
             } else {
                 allPlayers[turn].thirdDart = 'Busted';
                 allPlayers[turn].turnTotal = 'Busted';
-                allPlayers[turn].score = "CATS!!!";
+                allPlayers[turn].score = allPlayers[turn].revertScore;
             }
         }
 
@@ -74,15 +75,25 @@ angular.module('dartScorer.ScoreService', [])
         return turnData;
     };
 
-    scoreData.isValidTurn = function(dartScore, totalScore) {
+    scoreData.isValidTurn = function(dartScore, totalScore, type) {
         var gameid = $rootScope.gameid;
         console.log(totalScore);
         // 301 and 501 regular and tourney mode
-        if (gameid == 1 || gameid == 2 || gameid == 11 || gameid == 12) {
+        if (gameid == 1 || gameid == 2) {
             if (dartScore > totalScore.score) {
                 return false;
             }
             else {
+                return true;
+            }
+        } else if (gameid == 11 || gameid == 12) {
+            if (dartScore > totalScore.score) {
+                return false;
+            } else if (dartScore === totalScore.score && type !== 'double') {
+                return false;
+            } else if (dartScore - totalScore === 1) {
+                return false;
+            } else {
                 return true;
             }
         }
@@ -97,6 +108,19 @@ angular.module('dartScorer.ScoreService', [])
         //     // if (turnScore)
         //     //this.
         // }
+    };
+    scoreData.checkForWin = function(playerScore, type) {
+        var gameid = $rootScope.gameid;
+        if (gameid == 1 || gameid == 2 ) {
+            if (playerScore === 0) {
+                return true;
+            }
+        } else if (gameid == 11 || gameid == 12) {
+            if (playerScore === 0 && type === 'double') {
+
+                return true;
+            }
+        }
     };
 
     return scoreData;
