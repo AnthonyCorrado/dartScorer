@@ -1,6 +1,6 @@
 angular.module('dartScorer.GameController', [])
 
-.controller('GameController', function($scope) {
+.controller('GameController', function($scope, $rootScope) {
     $scope.gameTypes = [
         {'name': '301', 'gameTypeId': '1' },
         {'name': '301 Tournament', 'gameTypeId': '11' },
@@ -10,7 +10,7 @@ angular.module('dartScorer.GameController', [])
     ];
 
     $scope.selectedGame = function(gameTypeId) {
-        alert(gameTypeId);
+        $rootScope.gameid = gameTypeId;
     };
 
 });

@@ -1,6 +1,6 @@
 angular.module('dartScorer.ScoreService', [])
 
-.factory('ScoreService', function() {
+.factory('ScoreService', function($rootScope, lodash) {
     var scoreData = {};
     var roundNum = 1;
     var turnData = {
@@ -14,17 +14,43 @@ angular.module('dartScorer.ScoreService', [])
         var turnObj = this.whichTurn(allPlayers, true);
         var turn = turnObj.playerTurn;
         var newTurn = turnObj.nextTurn;
-        allPlayers[turn].score -= score;
-        allPlayers[turn].nextTurn = newTurn;
-        console.log(turnData.dartNum);
-        if ((turnData.dartNum - 1) % 3 === 0) {
-            allPlayers[turn].firstDart = score;
-        } else if ((turnData.dartNum + 1) % 3 === 0) {
-            allPlayers[turn].secondDart = score;
-        } else if (turnData.dartNum % 3 === 0) {
-            allPlayers[turn].thirdDart = score;
-            allPlayers[turn].turnTotal = allPlayers[turn].firstDart + allPlayers[turn].secondDart + allPlayers[turn].thirdDart;
+        var isValid = this.isValidTurn(score, allPlayers[turn]);
+        console.log(isValid);
+        if (turnObj.dartNum === 1) {
+            console.log('first dart');
         }
+
+        if (isValid) {
+            allPlayers[turn].score -= score;
+        }
+        allPlayers[turn].nextTurn = newTurn;
+
+        // first dart score property added if valid
+        if ((turnData.dartNum - 1) % 3 === 0) {
+            if (isValid) {
+                allPlayers[turn].firstDart = score;
+            } else {
+                allPlayers[turn].firstDart = 'Busted';
+            }
+        // second dart ......
+        } else if ((turnData.dartNum + 1) % 3 === 0) {
+            if (isValid) {
+                allPlayers[turn].secondDart = score;
+            } else {
+                 allPlayers[turn].secondDart = 'Busted';
+            }
+        // third dart ......
+        } else if (turnData.dartNum % 3 === 0) {
+            if (isValid) {
+                allPlayers[turn].thirdDart = score;
+                allPlayers[turn].turnTotal = allPlayers[turn].firstDart + allPlayers[turn].secondDart + allPlayers[turn].thirdDart;
+            } else {
+                allPlayers[turn].thirdDart = 'Busted';
+                allPlayers[turn].turnTotal = 'Busted';
+                allPlayers[turn].score = "CATS!!!";
+            }
+        }
+
         if (turnObj.dartNum % 3 === 0 && turnData.dartNum !== 0) {
             allPlayers[turn].nextTurn = true;
         }
@@ -46,6 +72,31 @@ angular.module('dartScorer.ScoreService', [])
             turnData.dartNum++;
         }
         return turnData;
+    };
+
+    scoreData.isValidTurn = function(dartScore, totalScore) {
+        var gameid = $rootScope.gameid;
+        console.log(totalScore);
+        // 301 and 501 regular and tourney mode
+        if (gameid == 1 || gameid == 2 || gameid == 11 || gameid == 12) {
+            if (dartScore > totalScore.score) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true;
+        }
+        // cricket mode
+        // else if (gameid == 3) {
+
+        //     var isNeeded = lodash.includes(totalScore.neededZones, dartScore);
+        //     console.log(isNeeded);
+        //     // if (turnScore)
+        //     //this.
+        // }
     };
 
     return scoreData;

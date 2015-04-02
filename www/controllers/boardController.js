@@ -49,7 +49,7 @@ angular.module('dartScorer.BoardController', [])
     $scope.initializeGame = function() {
         playerTurn = 0;
         dartNum = 1;
-        var competitors = GameSetupService.startGame($scope.players, $stateParams.gameType);
+        var competitors = GameSetupService.startGame($scope.players);
         $scope.setPlayers = competitors;
         $scope.closeModal();
     };
