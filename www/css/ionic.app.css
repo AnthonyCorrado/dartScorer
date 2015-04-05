@@ -14,6 +14,15 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.floated-right {
+  float: right; }
+
+.floated-left {
+  float: left; }
+
+.padded-right {
+  padding-right: 50%; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -7635,6 +7644,11 @@ a.button {
   border: 1px solid black;
   border-radius: 5px; }
 
+.player-select-light {
+  background-color: rgba(255, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 5px; }
+
 .player-image {
   width: 35%;
   position: inline-block;
@@ -7697,6 +7711,26 @@ a.button {
     padding: 0;
     float: right; }
 
+.continue-space .continue-wrap {
+  width: 100%;
+  height: 120px;
+  display: inline-block;
+  overflow: hidden; }
+  .continue-space .continue-wrap .continue-button {
+    width: 40%;
+    height: 100px;
+    margin: 0 5%;
+    color: white !important;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+    background-color: rgba(255, 0, 0, 0.3);
+    transform: rotate(-45deg);
+    -webkit-box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75); }
+
 .total-num {
   font-size: 1.5em;
   margin-left: 22%; }
@@ -7720,7 +7754,7 @@ a.button {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   width: 100%;
-  height: 100%; }
+  height: 120%; }
 
 .blur {
   -webkit-filter: blur(10px);
@@ -7752,7 +7786,11 @@ a.button {
   padding: 10%;
   font-size: 3em; }
 
-.current-player-box {
+.reduce-font {
+  font-size: 2em; }
+
+.current-player-box, .winner-player-box {
+  color: white;
   background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid black;
   border-radius: 10px;
@@ -7763,11 +7801,39 @@ a.button {
   -moz-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75); }
 
-.next-player-box {
+.winner-player-box {
+  background-color: rgba(255, 0, 0, 0.3); }
+
+.next-player-box, .next-player-box-win {
   margin-top: 10%;
-  background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid black;
   border-radius: 10px;
   -webkit-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75); }
+
+.next-player-box-win {
+  background-color: rgba(0, 0, 0, 0); }
+
+.winner-banner {
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-size: 2em;
+  text-align: center; }
+
+.record-type {
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 1%; }
+
+.record-total {
+  padding: 5% 0;
+  text-align: center; }
+
+.font-mod {
+  padding-left: 5%;
+  font-size: 1.3em; }
+
+.winner-spacer {
+  padding-left: 10px;
+  font-size: 0.8em; }

@@ -20,10 +20,18 @@ angular.module('dartScorer.ScoreService', [])
             allPlayers[turn].revertScore = allPlayers[turn].score;
         }
 
+        if (!isValid) {
+            allPlayers[turn].busted = true;
+        }
         if (isValid) {
             allPlayers[turn].score -= score;
             console.log(this.checkForWin(allPlayers[turn].score, type));
         }
+
+        if(this.checkForWin(allPlayers[turn].score, type)) {
+            allPlayers[turn].hasWon = true;
+        }
+
         allPlayers[turn].nextTurn = newTurn;
 
         // first dart score property added if valid
@@ -54,6 +62,7 @@ angular.module('dartScorer.ScoreService', [])
 
         if (turnObj.dartNum % 3 === 0 && turnData.dartNum !== 0) {
             allPlayers[turn].nextTurn = true;
+            allPlayers[turn].busted = false;
         }
 
         return allPlayers[turn];

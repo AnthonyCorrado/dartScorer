@@ -140,7 +140,8 @@
     <div class="score-container">
         <div class="player-score-box" ng-repeat="p in setPlayers">
             <div>{{p.name}}</div>
-            <div class="player-score">{{p.score}}</div>
+            <div class="player-score" ng-hide="p.busted">{{p.score}}</div>
+            <div class="reduce-font player-score" ng-show="p.busted">Busted!</div>
             <div class="player-image"><img ng-src="{{p.face}}"></div>
 
         </div>

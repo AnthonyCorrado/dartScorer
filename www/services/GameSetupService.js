@@ -8,7 +8,7 @@ angular.module('dartScorer.GameSetupService', [])
         var startingScore = 0;
         // set starting points based on game type
         if (gameid == 1 || gameid == 11) {
-            startingScore = 301;
+            startingScore = 50;
         } else if (gameid == 2 || gameid == 12) {
             startingScore = 501;
         } else if (gameid == 3) {

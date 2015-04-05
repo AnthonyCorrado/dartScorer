@@ -27,6 +27,9 @@ angular.module('dartScorer.BoardController', [])
 
     $scope.score = function(score, type) {
         var playerObj = ScoreService.score(score, type, $scope.setPlayers);
+        if (playerObj.hasWon) {
+            playerWinSummary(playerObj);
+        }
         if (playerObj.nextTurn) {
             console.log(playerObj);
             turnSummary();
@@ -67,6 +70,23 @@ angular.module('dartScorer.BoardController', [])
             scope: $scope,
             animation: 'slide-in-up',
             backdropClickToClose: true
+        }).then(function(modal) {
+            $scope.modal = modal;
+            $scope.modal.show();
+            $scope.grayBG = true;
+            $scope.blurBG = true;
+        });
+    };
+
+    // winnner's summary modal -------------------
+
+    var playerWinSummary = function(winnerObj) {
+        console.log(winnerObj.name + ' has won!!!');
+        $scope.winner = winnerObj;
+        $ionicModal.fromTemplateUrl('templates/winner-summary.html', {
+            scope: $scope,
+            animation: 'slide-in-up',
+            backdropClickToClose: false
         }).then(function(modal) {
             $scope.modal = modal;
             $scope.modal.show();
