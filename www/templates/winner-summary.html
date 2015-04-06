@@ -10,7 +10,7 @@
                 <div class="player-image"><img ng-src="{{winner.face}}"></div>
                 <div class="winner-banner">WINNER!</div>
                 <hr />
-                <div class="winner-spacer turn-score">Turns: <span class="floated-right padded-right ">18</span></div>
+                <div class="winner-spacer turn-score">Turns: <span class="floated-right padded-right ">{{gameDetails.roundNum}}</span></div>
                 <div class="winner-spacer turn-score">Points per Turn: <span class="floated-right padded-right ">27</span></div>
                 <div class="winner-spacer turn-score">Points per Dart: <span class="floated-right padded-right ">12</span></div>
                 <div class="winner-spacer turn-score">Win Margin: <span class="floated-right padded-right ">9</span></div>
@@ -23,8 +23,7 @@
                     <div class="continue-wrap">
                         <div class="floated-left continue-button" ng-hide="true" ng-click="">Continue</div>
                         <div class="floated-left continue-button" ng-show="true">Rematch</div>
-                        <a href="#/tab/dash"><div class="floated-right continue-button">Exit</div></a>
-                        <!-- <div class="continue-button">Continue</div> -->
+                        <a href="#/tab/dash"><div class="floated-right continue-button" ng-click="closeSummary()">Exit</div></a>
                     </div>
                     
                 </div>

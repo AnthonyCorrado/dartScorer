@@ -7649,6 +7649,12 @@ a.button {
   border: 1px solid black;
   border-radius: 5px; }
 
+.selected {
+  background-color: rgba(255, 0, 0, 0.6);
+  -webkit-box-shadow: inset 2px 2px 10px 1px rgba(255, 255, 230, 0.6);
+  -moz-box-shadow: inset 2px 2px 10px 1px rgba(255, 255, 230, 0.6);
+  box-shadow: inset 2px 2px 10px 1px rgba(255, 255, 230, 0.6); }
+
 .player-image {
   width: 35%;
   position: inline-block;
@@ -7727,9 +7733,9 @@ a.button {
     line-height: 100px;
     background-color: rgba(255, 0, 0, 0.3);
     transform: rotate(-45deg);
-    -webkit-box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: -3px 4px 3px 0px rgba(0, 0, 0, 0.75); }
+    -webkit-box-shadow: -3px 4px 3px 0 rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -3px 4px 3px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: -3px 4px 3px 0 rgba(0, 0, 0, 0.75); }
 
 .total-num {
   font-size: 1.5em;
@@ -7770,7 +7776,8 @@ a.button {
 
 .score-container {
   width: 100%;
-  height: 250px; }
+  height: 250px;
+  padding-top: 10px; }
 
 .player-score-box {
   width: 35%;
@@ -7778,8 +7785,13 @@ a.button {
   margin-left: 10%;
   margin-top: 2%;
   background-color: red;
+  border: 1px solid black;
+  border-radius: 10px;
   float: left;
-  font-size: 1.3em; }
+  font-size: 1.3em;
+  -webkit-box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.75); }
 
 .player-score {
   float: right;
@@ -7797,9 +7809,9 @@ a.button {
   padding: 8px;
   padding-left: 5%;
   padding-right: 5%;
-  -webkit-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75); }
+  -webkit-box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75); }
 
 .winner-player-box {
   background-color: rgba(255, 0, 0, 0.3); }
@@ -7808,9 +7820,9 @@ a.button {
   margin-top: 10%;
   border: 1px solid black;
   border-radius: 10px;
-  -webkit-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: -5px 5px 3px 0px rgba(0, 0, 0, 0.75); }
+  -webkit-box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: -5px 5px 3px 0 rgba(0, 0, 0, 0.75); }
 
 .next-player-box-win {
   background-color: rgba(0, 0, 0, 0); }
@@ -7837,3 +7849,19 @@ a.button {
 .winner-spacer {
   padding-left: 10px;
   font-size: 0.8em; }
+
+.games-container-gray {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.score-container-gray {
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 2px 2px 10px 1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: inset 2px 2px 10px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 2px 2px 10px 1px rgba(0, 0, 0, 0.6); }
+
+.player-score-box-red {
+  background-color: rgba(255, 0, 0, 0.6); }
+
+.tabs-stable > .tabs {
+  background: none;
+  background-color: white; }

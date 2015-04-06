@@ -5,8 +5,9 @@
 
     <ion-content>
         <div class="player-select-container" ng-repeat="(playerId, player) in players">
-            <div class="player-select-light player-box" ng-click="selectPlayer(playerId, player)">
-                <div class="player-info">{{player.name}}</div>
+            <div class="player-select-light player-box"
+                ng-click="selectPlayer(playerId, player, $index)" ng-class="{'selected': player.selected }">
+                <div class="player-info">{{player.name}}</div>  
                 <div class="player-image"><img ng-src="{{player.face}}"></div>
             </div>
         </div>

@@ -6,9 +6,9 @@ angular.module('dartScorer.BoardController', [])
         'playerTurn': 0
     };
 
-    $scope.test = 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/8lT9nh2LWcNYfec/Screen%20Shot%202015-01-15%20at%206.16.38%20PM.png';
+    // $scope.test = 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/8lT9nh2LWcNYfec/Screen%20Shot%202015-01-15%20at%206.16.38%20PM.png';
 
-    $scope.test2 = 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/0U85vmHHkkvwZRk/Screen%20Shot%202015-01-15%20at%206.08.01%20PM.png';
+    // $scope.test2 = 'https://s3.amazonaws.com/uploads.hipchat.com/39979/747064/0U85vmHHkkvwZRk/Screen%20Shot%202015-01-15%20at%206.08.01%20PM.png';
 
     $ionicModal.fromTemplateUrl('templates/player-select.html', {
         scope: $scope,
@@ -44,7 +44,7 @@ angular.module('dartScorer.BoardController', [])
 
     $scope.selectedPlayers = [];
 
-    $scope.selectPlayer = function(playerId, playerObj) {
+    $scope.selectPlayer = function(playerId, playerObj, index) {
         var id = playerId;
         $scope.players[playerId].selected = !$scope.players[playerId].selected;
     };
@@ -81,8 +81,10 @@ angular.module('dartScorer.BoardController', [])
     // winnner's summary modal -------------------
 
     var playerWinSummary = function(winnerObj) {
-        console.log(winnerObj.name + ' has won!!!');
+        console.log(winnerObj);
         $scope.winner = winnerObj;
+        $scope.gameDetails = ScoreService.turnQuery();
+        console.log($scope.gameDetails);
         $ionicModal.fromTemplateUrl('templates/winner-summary.html', {
             scope: $scope,
             animation: 'slide-in-up',
@@ -94,6 +96,18 @@ angular.module('dartScorer.BoardController', [])
             $scope.blurBG = true;
         });
     };
+
+    $scope.closeSummary = function() {
+        $scope.closeModal();
+    };
+
+    // ionic modal functions -------------------
+    $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams){
+            if($scope.modal) {
+                $scope.closeModal();
+            }
+        });
 
     // -------- modal controls -------------------
     $scope.closeModal = function() {

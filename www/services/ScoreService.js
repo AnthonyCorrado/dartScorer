@@ -9,12 +9,20 @@ angular.module('dartScorer.ScoreService', [])
         'nextTurn': false
     };
 
-    scoreData.score = function(score, type, allPlayers) {
+    scoreData.turnQuery = function() {
+        return {
+            'roundNum': roundNum,
+            'dartNum': turnData.dartNum,
+            'playerTurn': turnData.playerTurn
+        };
+    };
 
+    scoreData.score = function(score, type, allPlayers) {
         var turnObj = this.whichTurn(allPlayers, true);
         var turn = turnObj.playerTurn;
         var newTurn = turnObj.nextTurn;
         var isValid = this.isValidTurn(score, allPlayers[turn], type);
+        console.log('is valid: ' + isValid);
         // sets score to revert back to in the event of a bust
         if ((turnObj.dartNum + 2) % 3 === 0) {
             allPlayers[turn].revertScore = allPlayers[turn].score;
@@ -30,6 +38,9 @@ angular.module('dartScorer.ScoreService', [])
 
         if(this.checkForWin(allPlayers[turn].score, type)) {
             allPlayers[turn].hasWon = true;
+            // if()
+            // console.log(allPlayers.length + ' players playing');
+
         }
 
         allPlayers[turn].nextTurn = newTurn;
@@ -43,14 +54,14 @@ angular.module('dartScorer.ScoreService', [])
             }
         // second dart ......
         } else if ((turnData.dartNum + 1) % 3 === 0) {
-            if (isValid) {
+            if (isValid && !allPlayers[turn].busted) {
                 allPlayers[turn].secondDart = score;
             } else {
                  allPlayers[turn].secondDart = 'Busted';
             }
         // third dart ......
         } else if (turnData.dartNum % 3 === 0) {
-            if (isValid) {
+            if (isValid && !allPlayers[turn].busted) {
                 allPlayers[turn].thirdDart = score;
                 allPlayers[turn].turnTotal = allPlayers[turn].firstDart + allPlayers[turn].secondDart + allPlayers[turn].thirdDart;
             } else {
@@ -77,6 +88,7 @@ angular.module('dartScorer.ScoreService', [])
                     turnData.playerTurn++;
                 } else {
                     turnData.playerTurn = 0;
+                    roundNum++;
                 }
             }
             turnData.dartNum++;

@@ -19,6 +19,9 @@ $dark:                            #444 !default;
 
 $light-gray:                      rgba(255, 255, 255, 0.3);
 $red-highlight:                   rgba(255, 0, 0, 0.3);
+$background-gray:                 rgba(0, 0 ,0, 0.5);
+$dull-red:                        rgba(255, 0, 0, 0.6);
+
 
 .floated-right { 
     float: right;
@@ -35,6 +38,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+// *** Mixins *** ----------------------------
+@mixin box-shadow($top, $left, $blur, $size, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $size $color;
+    -moz-box-shadow:inset $top $left $blur $size $color;
+    box-shadow:inset $top $left $blur $size $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $size$color;
+    -moz-box-shadow: $top $left $blur $size $color;
+    box-shadow: $top $left $blur $size $color;
+  }
+}
 
 * {
     font-family: 'PT Sans Narrow', sans-serif;
@@ -78,6 +94,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     background-color: $red-highlight;
     border: 1px solid black;
     border-radius: 5px;
+}
+.selected {
+    background-color: $dull-red;
+    @include box-shadow(2px, 2px, 10px, 1px, rgba(255, 255, 230, 0.6), true);
 }
 .player-image {
     width: 35%;
@@ -189,10 +209,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
             background-color: rgba(255, 0, 0, 0.3);
 
             transform: rotate(-45deg);
-
-            -webkit-box-shadow: -3px 4px 3px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: -3px 4px 3px 0px rgba(0,0,0,0.75);
-            box-shadow: -3px 4px 3px 0px rgba(0,0,0,0.75);
+            @include box-shadow(-3px, 4px, 3px, 0, rgba(0,0,0,0.75), false);
         }
     }
 }
@@ -240,6 +257,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .score-container {
     width: 100%;
     height: 250px;
+    padding-top: 10px;
 }
 .player-score-box {
     width: 35%;
@@ -247,8 +265,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     margin-left: 10%;
     margin-top: 2%;
     background-color: red;
+    border: 1px solid black;
+    border-radius: 10px;
     float: left;
     font-size: 1.3em;
+    @include box-shadow(-3px, 3px, 3px, 0, rgba(0,0,0,0.75));
 }
 .player-score {
     float: right;
@@ -266,9 +287,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     padding: 8px;
     padding-left: 5%;
     padding-right: 5%;
-    -webkit-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
-    box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
+    @include box-shadow(-5px, 5px, 3px, 0, rgba(0,0,0,0.75));
 
 }
 .winner-player-box {
@@ -280,9 +299,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     // background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid black;
     border-radius: 10px;
-    -webkit-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
-    box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
+    @include box-shadow(-5px, 5px, 3px, 0, rgba(0,0,0,0.75));
 }
 .next-player-box-win {
     @extend .next-player-box;
@@ -312,4 +329,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .winner-spacer {
     padding-left: 10px;
     font-size: 0.8em;
+}
+
+// Board and Scoreboard stylings and themes ---------------------
+
+.games-container-gray {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.score-container-gray {
+    background-color: rgba(0, 0, 0, 0.5);
+    @include box-shadow(2px, 2px, 10px, 1px, rgba(0, 0, 0, 0.6), true);
+}
+.player-score-box-red {
+    background-color: $dull-red;
+}
+
+.tabs-stable > .tabs {
+    background:none;
+    background-color:white;
 }
